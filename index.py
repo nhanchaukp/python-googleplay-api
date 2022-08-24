@@ -12,6 +12,3 @@ def home():
 def apps(appid):
     result = app(appid, lang='en', country='us')
     return json.dumps(result)
-    
-if __name__ == '__main__':
-    app.run()
