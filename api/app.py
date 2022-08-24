@@ -12,3 +12,5 @@ class handler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(bytes(json.dumps(result), 'utf8'))
             return
+        else:
+            self.send_error(404,"Not found")
