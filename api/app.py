@@ -1,7 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from google_play_scraper import app
-from cowpy import cow
-import json
+import json, os
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -13,10 +12,7 @@ class handler(BaseHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header("Content-type", "application/json")
                 self.end_headers()
-                message = cow.Cowacter().milk(json.dumps(result))
-                self.wfile.write(message.encode())
+                self.wfile.write(bytes(json.dumps(result), 'utf8'))
                 return
-            else:
-                return super(handler, self).send_head()
         except:
             self.send_error(500, "Error")
