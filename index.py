@@ -10,5 +10,5 @@ def home():
 
 @app.route('/apps/<path:appid>')
 def apps(appid):
-    result = app(appid, lang='en', country='us')
+    result = app(appid)
     return json.dumps(result)
