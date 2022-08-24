@@ -1,5 +1,5 @@
 from flask import Flask, Response
-from google_play_scraper import app
+import google_play_scraper
 import json
 
 app = Flask(__name__)
@@ -10,5 +10,5 @@ def home():
 
 @app.route('/apps/<path:appid>')
 def apps(appid):
-    result = app(appid)
+    result = google_play_scraper.app(appid)
     return json.dumps(result)
