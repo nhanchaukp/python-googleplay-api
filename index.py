@@ -11,4 +11,9 @@ def home():
 @app.route('/apps/<path:appid>')
 def apps(appid):
     result = google_play_scraper.app(appid)
-    return json.dumps(result)
+    response = app.response_class(
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
